@@ -1,3 +1,267 @@
-h1{
-    color: red;
+header{
+    background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0)), url("../img/back_image.svg");
+    /*background-image: url("../img/back_image.svg");*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.header_main{
+    display: flex;
+    justify-content: end;
+    /*background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));*/
+    width: 100%;
+    height: 120px;
+}
+
+
+.header_main a{
+    font-family: Roboto, serif;
+    font-size: 15px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.header_main a:hover{
+    color: #838080;
+    border-bottom: solid 1px white;
+    padding-bottom: 7px;
+}
+
+.content_1{
+    width: 80%;
+    height: 550px;
+    border: solid 2px transparent;
+    border-radius: 100px;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.09),
+                inset 0 0 10px 2px rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart{
+    margin-right: 200px;
+}
+
+.zagolovok{
+    width: 420px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.zagolovok h1{
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: bold;
+    color: white;
+}
+
+.text_osnova{
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.text_osnova p{
+    color: white;
+    font-family: Roboto, serif;
+}
+
+.bid{
+    width: 220px;
+    height: 54px;
+    margin-top: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bid a{
+    color: #D1B78A;
+    text-decoration: none;
+}
+
+.main_content{
+    height: 980px;
+    margin-top: 50px;
+}
+
+.content_2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 90px;
+}
+
+.content_3{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_content_1{
+    width: 40vh;
+    border-radius: 30px;
+    margin-right: 400px;
+}
+
+.image_content_2{
+    width: 40vh;
+    border-radius: 30px;
+    margin-left:400px ;
+}
+
+.text_content_2{
+    width: 300px;
+}
+
+.text_content_2 p{
+    color: white;
+    font-family: Roboto, serif;
+    line-height: 2.1;
+}
+
+
+.text_content_3{
+    width: 300px;
+}
+
+.text_content_3 p{
+    color: white;
+    font-family: Roboto, serif;
+    line-height: 2.1;
+}
+
+.main_content_2{
+    height: 2400px;
+    background-color: #D1B78A;
+}
+
+.main_content_2 img{
+    width: 200px;
+}
+
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.carousel-track {
+    display: flex;
+    will-change: transform;
+}
+
+
+.carousel-track img {
+    width: 200px;
+    height: auto;
+    margin-right: 120px;
+    flex-shrink: 0;
+    border: solid 8px #a18754;
+    border-radius: 30px;
+}
+.carousel_2 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.carousel-track_2 {
+    display: flex;
+    will-change: transform;
+}
+
+
+.carousel-track_2 img {
+     transform: translateX(-3000px);
+    width: 200px;
+    height: auto;
+    margin-right: 120px;
+    flex-shrink: 0;
+    border: solid 8px #a18754;
+    border-radius: 30px;
+}
+
+.carousel_3 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.carousel-track_3 {
+    display: flex;
+    will-change: transform;
+}
+
+
+.carousel-track_3 img {
+    width: 200px;
+    height: auto;
+    margin-right: 120px;
+    flex-shrink: 0;
+    border: solid 8px #a18754;
+    border-radius: 30px;
+}
+
+.main_content_4{
+    width: 100%;
+    height: 900px;
+    background-color: #D1B78A;
+}
+
+.content_form{
+    width: 80%;
+    height: 650px;
+    border: solid 2px transparent;
+    border-radius: 100px;
+    box-shadow: 0 0 10px 5px rgba(37, 27, 27, 0.09),
+                inset 0 0 10px 2px rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(28, 23, 23, 0.3);
+}
+
+.connection{
+    width: 350px;
+}
+
+.form_email{
+    width: 400px;
+    height: auto;
+}
+
+
+.send_email{
+    width: 400px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+.send_text{
+        width: 400px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+.send_all{
+    width: 100px;
 }
