@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excursions</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'icon/logo.svg' %}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,23 +18,23 @@
 </head>
 <body>
 <header>
-    <div class="header_main">
+    <div class="header_main col-12 container-fluid">
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="{% static 'icon/logo.svg' %}" alt="Логотип" width="50px">
+        </div>
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid">
-            <a class="nav-link" href="#">О Самарканде</a>
+            <a class="nav-link" href="#about">О Самарканде</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Экскурсии по городам</a>
+                  <a class="nav-link" href="#travel">Экскурсии по городам</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Фотографии</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Контакты</a>
+                  <a class="nav-link" href="#contact">Контакты</a>
                 </li>
               </ul>
             </div>
@@ -62,174 +63,106 @@
     </div>
 </header>
 <body style="background-color: #D1B78A; display: flex; flex-direction: column">
-    <div class="main_content">
-        <div class="content_2">
-            <img src="{% static 'img/photo_1.svg' %}" alt="" class="image_content_1">
-            <div class="text_content_2">
-                <p>     Все, что я слышал о красоте Самарканд, все правда,
-                    за исключением того, что город оказался более красив,
-                    чем я мог представить "Не даром Александр Македонский восклицал эти слова"
-                </p>
-            </div>
-        </div>
-        <div class="content_3">
-            <div class="text_content_3">
+    <div class="main_content" id="about">
+        <div class="card_1">
+            <img src="{% static 'img/woman.jpg' %}" alt="" >
                 <p>Эдем Востока, хранимый Аллахом, все эти эпитеты о Самарканде,
-                    столице великой империи Тамерлана ведь
-                    не зря Великий завоеватель
-                    обратил свой взор именно на Самарканд!
-                    Обилие мозаик, элементов резной поливной терракоты,
-                    майолики, монументальность построек не оставит Вас равнодушным!
-                </p>
-            </div>
-            <img src="{% static 'img/photo_2.svg' %}" alt="" class="image_content_2">
+                столице великой империи Тамерлана ведь не зря
+                Великий завоеватель обратил свой взор именно на Самарканд!
+                Обилие мозаик, элементов резной поливной терракоты,
+                майолики, монументальность построек не оставит Вас равнодушным!</p>
         </div>
-        <div class="content_2">
-
-        </div>
-    </div>
-    <div class="main_content_2">
-        <div id="carouselExampleCaptions" class="carousel slide">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{% static 'img/photo_1.svg' %}" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h1>Ташкент</h1>
-                <p>    Ташкент, столица Узбекистана, является одним из самых очаровательных.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="{% static 'img/photo_2.svg' %}" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h1>Бухара</h1>
-                <p>    Бухара – древний узбекский город-музей, через который пролегал Великий шелковый путь .</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="{% static 'img/photo_3.svg' %}" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h1>Хива</h1>
-                <p>    Хива(Ичан-кала) это целый город-музей внутри крепостных стен, который находится под эгидой ЮНЕСКО.</p>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+        <div class="card_2">
+            <p>Все, что я слышал о красоте Самарканда, все правда,
+                за исключением того, что город оказался более красив,
+                чем я мог представить "Не даром Александр Македонский восклицал эти слова"</p>
+            <img src="{% static 'img/photo_21.svg' %}" alt="" >
         </div>
     </div>
-    <div class="main_content_3 d-flex flex-column">
-        <div class="carousel">
-            <div class="carousel-track">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-                <!-- Дублируем для бесконечного эффекта -->
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
+    <div class="main_content_2" id="travel">
+            <div class="container">
+        <div class="slide">
+            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
+                <div class="content">
+                    <div class="name">Switzerland</div>
+                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                    <button>See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
+                <div class="content">
+                    <div class="name">Finland</div>
+                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                    <button>See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
+                <div class="content">
+                    <div class="name">Iceland</div>
+                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                    <button>See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
+                <div class="content">
+                    <div class="name">Australia</div>
+                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                    <button>See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
+                <div class="content">
+                    <div class="name">Netherlands</div>
+                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                    <button>See More</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
+                <div class="content">
+                    <div class="name">Ireland</div>
+                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
+                    <button>See More</button>
+                </div>
             </div>
         </div>
-        <div style="margin-bottom: 40px; margin-top: 40px" class="carousel_2">
-            <div class="carousel-track_2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-                <!-- Дублируем для бесконечного эффекта -->
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-            </div>
-        </div>
-        <div class="carousel_3">
-            <div class="carousel-track_3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-                <!-- Дублируем для бесконечного эффекта -->
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
 
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 1">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 2">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 3">
-                <img src="{% static 'img/photo_2.svg' %}" alt="Image 4">
-            </div>
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
     </div>
-    <div class="main_content_4 d-flex justify-content-center align-items-center">
+    </div>
+    <div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
         <div class="content_form">
+            <div class="form_email d-flex flex-column justify-content-center align-items-center">
+                <h1 style="color: white; font-family: Roboto, serif; font-size: 25px; margin-bottom: 150px">Связаться со мной</h1>
+                <form action="" method="POST" class="d-flex flex-column" style="margin-right: 100px">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Имя" class="send_email">
+                    <input type="number" name="text" placeholder="Телефон" class="send_text">
+                    <input type="text" name="city" placeholder="Город" class="send_city">
+                    <input type="submit" value="Отправить" class="send_all">
+                </form>
+            </div>
             <div class="connection d-flex flex-column">
-                <h3 style="margin-bottom: 50px; color: white; font-family: Roboto, serif; font-size: 33px; margin-left: 40px">Связаться со мной</h3>
+                <h3 style="margin-bottom: 50px; color: white; font-family: Roboto, serif; font-size: 33px; margin-left: 40px">Контакты</h3>
                 <span style="color: white; margin-left: 40px">Телефон:+998 90 997 01 98</span>
                 <span style="color: white; margin-left: 40px">Email: chto-to@gmail.com</span>
-                <div class="bid" style="margin-left: 40px; margin-bottom: 100px">
-                    <a href="#">Экскурсии</a>
-                </div>
                 <div class="d-flex flex-row justify-content-around">
                     <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
                     <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
                     <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
                 </div>
             </div>
-            <div class="form_email d-flex flex-column justify-content-center align-items-center">
-                <h1 style="color: white; font-family: Roboto, serif; font-size: 25px; margin-bottom: 150px">Оставьте почту и напишите интересующий вопрос</h1>
-                <form action="" method="POST" class="d-flex flex-column" style="margin-right: 100px">
-                    {% csrf_token %}
-                    <input type="email" name="email" placeholder="Введите почту" class="send_email">
-                    <input type="text" name="text" placeholder="Напишите здесь..." class="send_text">
-                    <input type="submit" value="Отправить" class="send_all">
-                </form>
-            </div>
         </div>
     </div>
 </body>
-<footer style="width: 100%; height: 70px; background-color: rgba(28,23,23,0.4)" class="d-flex justify-content-center align-items-center">
+<footer style="height: 70px; background-color: rgba(28,23,23,0.4)" class="d-flex justify-content-center align-items-center col-12 container-fluid">
     <span style="font-family: Roboto, serif">©2024. Все права защищены</span>
 </footer>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/popper.js' %}"></script>
-<script src="{% static 'js/animation_lenta.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
