@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Excursions</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,7 +44,9 @@
     </div>
         <div class="main_1 d-flex justify-content-center align-items-center">
         <div class="content_1">
-            <div class="cart" style="z-index: 1"><img src="{% static 'img/udostoverenie.svg' %}" alt="Удостоверение", width="287px"></div>
+            <div class="cart" style="z-index: 1">
+                <img src="{% static 'img/udostoverenie.svg' %}" alt="Удостоверение", width="287px">
+            </div>
             <div class="text" style="z-index: 1">
                 <div class="zagolovok">
                     <h1>Самарканд — Сердце Средней Азии</h1>
@@ -56,7 +58,7 @@
                         которые останутся с вами навсегда!</p>
                 </div>
                 <div class="bid">
-                    <a href="#">Оставить заявку</a>
+                    <a href="#form_bid">Оставить заявку</a>
                 </div>
             </div>
         </div>
@@ -79,79 +81,65 @@
             <img src="{% static 'img/photo_21.svg' %}" alt="" >
         </div>
     </div>
-    <div class="main_content_2" id="travel">
-            <div class="container">
-        <div class="slide">
-            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
-                <div class="content">
-                    <div class="name">Switzerland</div>
-                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
-                    <button>See More</button>
+            <div class="main_content_2" id="travel" style="overflow-x: hidden">
+                    <div class="container" style="overflow-x: hidden">
+                <div class="slide">
+        {% for city in maincontent %}
+                        <div class="item" style="background-image: url({{ city.image_city.url }});">
+                            <div class="content">
+                                <div class="name">{{ city.name }}</div>
+                                <div class="des" style="width: 300px">{{ city.description }}</div>
+                                <button  onclick="window.location.href='{% url 'index_2' %}'">Экскурсии</button>
+                            </div>
+                        </div>
+        {% endfor %}
+                        <div class="button">
+                            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
                 </div>
             </div>
-            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
-                <div class="content">
-                    <div class="name">Finland</div>
-                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
-                    <button>See More</button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
-                <div class="content">
-                    <div class="name">Iceland</div>
-                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
-                    <button>See More</button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
-                <div class="content">
-                    <div class="name">Australia</div>
-                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
-                    <button>See More</button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
-                <div class="content">
-                    <div class="name">Netherlands</div>
-                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
-                    <button>See More</button>
-                </div>
-            </div>
-            <div class="item" style="background-image: url({% static 'img/photo_2.svg' %});">
-                <div class="content">
-                    <div class="name">Ireland</div>
-                    <div class="des">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!</div>
-                    <button>See More</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="button">
-            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
-            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-    </div>
-    </div>
     <div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
-        <div class="content_form">
-            <div class="form_email d-flex flex-column justify-content-center align-items-center">
-                <h1 style="color: white; font-family: Roboto, serif; font-size: 25px; margin-bottom: 150px">Связаться со мной</h1>
-                <form action="" method="POST" class="d-flex flex-column" style="margin-right: 100px">
+        <div class="content_form" id="form_bid">
+            <div class="form-container">
+                <h2>Связаться со мной</h2>
+                <form action="" method="POST" style="padding-top: 80px">
                     {% csrf_token %}
-                    <input type="text" name="name" placeholder="Имя" class="send_email">
-                    <input type="number" name="text" placeholder="Телефон" class="send_text">
-                    <input type="text" name="city" placeholder="Город" class="send_city">
-                    <input type="submit" value="Отправить" class="send_all">
+                      <div class="form-group">
+                        <input type="text" id="name" placeholder=" " required>
+                        <label for="name">Имя</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="tel" id="phone" placeholder=" " required>
+                        <label for="phone">Телефон</label>
+                      </div>
+                      <div class="form-group">
+                        <input type="text" id="city" placeholder=" " required>
+                        <label for="city">Город</label>
+                      </div>
+                      <button type="submit">Оставить заявку</button>
                 </form>
-            </div>
-            <div class="connection d-flex flex-column">
-                <h3 style="margin-bottom: 50px; color: white; font-family: Roboto, serif; font-size: 33px; margin-left: 40px">Контакты</h3>
-                <span style="color: white; margin-left: 40px">Телефон:+998 90 997 01 98</span>
-                <span style="color: white; margin-left: 40px">Email: chto-to@gmail.com</span>
-                <div class="d-flex flex-row justify-content-around">
-                    <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
-                    <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
-                    <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
+              </div>
+            <div class="connection">
+                <h3>Контакты</h3>
+                <span>Телефон:+998 90 997 01 98</span>
+                <span>Email: chto-to@gmail.com</span>
+                <div class="d-flex flex-row justify-content-around logotip">
+                    <a href="https://t.me/bySiyavush">
+                        <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
+                    </a>
+
+                    <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
+                        <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
+                    </a>
+
+                    <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
+                        <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
+                    </a>
+
+                    <a href="">
+                        <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
+                    </a>
                 </div>
             </div>
         </div>
