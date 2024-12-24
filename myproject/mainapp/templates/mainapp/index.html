@@ -81,69 +81,70 @@
             <img src="{% static 'img/photo_21.svg' %}" alt="" >
         </div>
     </div>
-            <div class="main_content_2" id="travel" style="overflow-x: hidden">
+    <div class="main_content_2" id="travel" style="overflow-x: hidden">
                     <div class="container" style="overflow-x: hidden">
-                <div class="slide">
-                        {% for city in maincontent %}
-                            <div class="item" style="background-image: url({{ city.image_city.url }});">
-                                <div class="content">
-                                    <div class="name">{{ city.name }}</div>
-                                    <div class="des" style="width: 300px">{{ city.description }}</div>
-                                    <button  onclick="window.location.href='{% url 'index_2' %}'">Экскурсии</button>
-                                </div>
+                            <div class="slide">
+                                    {% for city in maincontent %}
+                                        <div class="item" style="background-image: url({{ city.image_city.url }});">
+                                            <div class="content">
+                                                <div class="name">{{ city.name }}</div>
+                                                <div class="des" style="width: 300px">{{ city.description }}</div>
+                                                <button  onclick="window.location.href='{% url 'index_2' %}'">Экскурсии</button>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
                             </div>
-                        {% endfor %}
-                </div>
                             <div class="button">
                                 <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
                                 <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
                             </div>
-            </div>
-    <div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
-        <div class="content_form" id="form_bid">
-            <div class="form-container">
-                <h2>Связаться со мной</h2>
-                <form action="" method="POST" style="padding-top: 80px">
-                    {% csrf_token %}
-                      <div class="form-group">
-                        <input type="text" id="name" placeholder=" " required>
-                        <label for="name">Имя</label>
-                      </div>
-                      <div class="form-group">
-                        <input type="tel" id="phone" placeholder=" " required>
-                        <label for="phone">Телефон</label>
-                      </div>
-                      <div class="form-group">
-                        <input type="text" id="city" placeholder=" " required>
-                        <label for="city">Город</label>
-                      </div>
-                      <button type="submit">Оставить заявку</button>
-                </form>
-              </div>
-            <div class="connection">
-                <h3>Контакты</h3>
-                <span>Телефон:+998 90 997 01 98</span>
-                <span>Email: chto-to@gmail.com</span>
-                <div class="d-flex flex-row justify-content-around logotip">
-                    <a href="https://t.me/bySiyavush">
-                        <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
-                    </a>
+                    </div>
+    </div>
+<div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
+    <div class="content_form" id="form_bid">
+        <div class="form-container">
+            <h2>Связаться со мной</h2>
+            <form action="" method="POST" style="padding-top: 80px">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <input type="text" id="name" placeholder=" " required name="name">
+                    <label for="name">Имя</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="tel" id="phone" placeholder=" " required name="phone">
+                    <label for="phone">Телефон</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="city" placeholder=" " required name="city">
+                    <label for="city">Город</label>
+                  </div>
+                  <button type="submit">Оставить заявку</button>
+            </form>
+          </div>
+        <div class="connection">
+            <h3>Контакты</h3>
+            <span>Телефон:+998 90 997 01 98</span>
+            <span>Email: bysiyavush@gmail.com</span>
+            <div class="d-flex flex-row justify-content-around logotip">
+                <a href="https://t.me/bySiyavush">
+                    <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
+                </a>
 
-                    <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
-                        <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
-                    </a>
+                <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
+                    <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
+                </a>
 
-                    <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
-                        <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
-                    </a>
+                <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
+                    <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
+                </a>
 
-                    <a href="">
-                        <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
-                    </a>
-                </div>
+                <a href="https://www.facebook.com/share/15cDKoRAxz/">
+                    <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
+                </a>
             </div>
         </div>
     </div>
+</div>
 </body>
 <footer style="height: 70px; background-color: rgba(28,23,23,0.4)" class="d-flex justify-content-center align-items-center col-12 container-fluid">
     <span style="font-family: Roboto, serif">©2024. Все права защищены</span>

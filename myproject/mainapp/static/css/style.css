@@ -233,8 +233,8 @@ header{
 }
 
 .container .slide .item{
-    width: 90px;
-    height: 150px;
+    width: 200px;
+    height: 300px;
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
