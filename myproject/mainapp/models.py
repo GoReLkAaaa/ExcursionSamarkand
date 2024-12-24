@@ -15,3 +15,5 @@ class MainDeskription(models.Model):
     class Meta:
         verbose_name = 'Главная карточка города'
         verbose_name_plural = 'Главные карточки городов'
+
+

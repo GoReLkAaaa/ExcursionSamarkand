@@ -13,14 +13,20 @@ def index(request):
         }
         return render(request, templates, context)
     else:
-        name = request.POST('name')
-        phone = request.POST('phone')
-        city = request.POST('city')
+        name = request.POST['name']
+        phone = request.POST['phone']
+        city = request.POST['city']
         email = 'nikitospogorelyn@gmail.com'
         try:
-            subject = f'Новое письмо от {name}'
+            subject = f'Новая заявка на экскурсию'
+            message = f'Здравствуйте меня зовут {name} \n\n'
+            message += f'Мой номер телефона {phone} \n\n'
+            message += f'Я хочу поседить {city} \n\n'
+            mail = EmailMessage(subject=subject, body=message, to=[email])
+            mail.send()
+            return redirect('index')
         except ValueError:
-            pass
+            return redirect('index')
 
 
 
@@ -28,3 +34,8 @@ def index(request):
 def index_2(request):
     templates = 'mainapp/index_2.html'
     return render(request, templates)
+
+
+
+def error_404(request, exception):
+    return render(request, 'mainapp/404.html')
