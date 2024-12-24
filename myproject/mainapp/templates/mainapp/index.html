@@ -84,20 +84,20 @@
             <div class="main_content_2" id="travel" style="overflow-x: hidden">
                     <div class="container" style="overflow-x: hidden">
                 <div class="slide">
-        {% for city in maincontent %}
-                        <div class="item" style="background-image: url({{ city.image_city.url }});">
-                            <div class="content">
-                                <div class="name">{{ city.name }}</div>
-                                <div class="des" style="width: 300px">{{ city.description }}</div>
-                                <button  onclick="window.location.href='{% url 'index_2' %}'">Экскурсии</button>
+                        {% for city in maincontent %}
+                            <div class="item" style="background-image: url({{ city.image_city.url }});">
+                                <div class="content">
+                                    <div class="name">{{ city.name }}</div>
+                                    <div class="des" style="width: 300px">{{ city.description }}</div>
+                                    <button  onclick="window.location.href='{% url 'index_2' %}'">Экскурсии</button>
+                                </div>
                             </div>
-                        </div>
-        {% endfor %}
-                        <div class="button">
-                            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
+                        {% endfor %}
                 </div>
+                            <div class="button">
+                                <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+                                <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
             </div>
     <div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
         <div class="content_form" id="form_bid">
