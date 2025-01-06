@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Excursions</title>
+    <title>Phoenix wings</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -89,7 +89,7 @@
                                             <div class="content">
                                                 <div class="name">{{ city.name }}</div>
                                                 <div class="des" style="width: 300px">{{ city.description }}</div>
-                                                <button  onclick="window.location.href='{% url 'index_2' %}'">Экскурсии</button>
+                                                <button  onclick="window.location.href='{% url 'catalog' city.id %}'">Экскурсии</button>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -118,6 +118,7 @@
                     <input type="text" id="city" placeholder=" " required name="city">
                     <label for="city">Город</label>
                   </div>
+                    <input type="text" name="honeypot" style="display: none">
                   <button type="submit">Оставить заявку</button>
             </form>
           </div>

@@ -1,0 +1,78 @@
+header{
+    background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 30vh;
+}
+
+.header_main{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    height: 120px;
+}
+
+.header_main a{
+    font-family: Roboto, serif;
+    font-size: 15px;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.header_main a:hover{
+    color: #838080;
+}
+
+body{
+    background-color: #D1B78A;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.name_city{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.name_city h1{
+    color: #FFFFFF;
+    font-family: "Playfair Display";
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.poloska{
+    background-color: #D9D9D9;
+    width: 350px;
+    height: 15px;
+    border-radius: 20px;
+}
+
+.main_exc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.cart_excurs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 400px;
+    height: auto;
+}
