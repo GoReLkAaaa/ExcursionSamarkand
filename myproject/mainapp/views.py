@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import MainDeskription, CatalogEkskursii
 from django.core.mail import EmailMessage
 from django.http import Http404
@@ -25,7 +25,7 @@ def index(request):
             message += f'Я хочу поседить {city} \n\n'
             mail = EmailMessage(subject=subject, body=message, to=[email])
             mail.send()
-            return redirect('index')
+            return redirect('phoenix_wings')
         except ValueError:
             return redirect('page_not_found')
 
@@ -34,8 +34,10 @@ def index(request):
 def index_2(request, id):
     if request.method == 'GET':
         templates = 'mainapp/index_2.html'
+        name_city = MainDeskription.objects.get(id=id)
         exccurs = CatalogEkskursii.objects.filter(main_id=id)
         context = {
+            'name_city': name_city,
             'excurs': exccurs,
         }
         if not exccurs.exists():
@@ -53,7 +55,7 @@ def index_2(request, id):
             message += f'Я хочу поседить {city} \n\n'
             mail = EmailMessage(subject=subject, body=message, to=[email])
             mail.send()
-            return redirect('index')
+            return redirect('catalog', id=id)
         except ValueError:
             return redirect('page_not_found')
 
