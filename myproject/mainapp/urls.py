@@ -8,3 +8,4 @@ urlpatterns = [
     path('catalog/<int:id>', views.index_2, name='catalog'),
     path('400/', views.error_form_requests, name='error_form_requests'),
 ]
+

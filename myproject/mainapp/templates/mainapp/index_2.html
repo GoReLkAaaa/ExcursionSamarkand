@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Phoenix wings</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style_2.css' %}">
     <link rel="icon" href="{% static 'icon/logo.svg' %}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,6 +40,11 @@
      </div>
 </header>
 <main>
+            <div class="scroll_button">
+                    <div id="scrollToTop" class="scroll-to-top">
+                        ↑
+                    </div>
+            </div>
             <div class="name_city">
                 <h1>{{ name_city.name }}</h1>
                 <div class="poloska"></div>
@@ -49,63 +56,34 @@
                         <img src="{{ exc.image_excursion.url }}" alt="">
                         <span>Экскурсия {{ exc.name_excursion }}</span>
                         <span>Цена {{ exc.price_excursion }}$</span>
-                        <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary button_modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
                           Подробнее
                         </button>
 
-                        <!-- Modal -->
+
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: #FFFFFF">{{ name_city.name }}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <div class="modal-body">
-                                Тур «Ташкент - Бухара - Самарканд - Шахрисабз - Ташкент»
-
-                                (3 дня и 2 ночи)
-
-                                Экскурсия в Бухаре:
-                                📍Боло хауза
-                                📍Смотровая башня( шуховская башня )
-                                📍Арк
-                                📍Комплекс пои калон
-                                📍Комплекс кош мадраса
-                                📍Торговые купола 4объекта
-                                📍Мечеть Магоки атори
-                                📍Лаби хауз комплекс и ремесленнические центры по пути к экскурсии
-
-                                Экскурсия в Самарканде
-                                📍Гури Амир
-                                📍Регистан
-                                📍Святой Даниил
-                                📍Шохи Зинда
-                                📍Обсервотрия Улугбека
-
-                                по выбору
-                                📍Производство бумаг
-                                📍Производство ковров
-                                📍Производство вин
-
-                                Экскурсия в Шахрисабз
-                                📍Долина Демонов и перевал Китаб
-                                📍Обед на перевале
-                                📍Дворец Ак Сарай
-                                📍Мемориальный комплекс Дорус Тилловат
-                                📍Комплекс Дорус Саодат
-
-                                За три дня и две ночи
-                                Стоимость до 3 человек, язык:
-                                Русский 740$
-                                English 770$
-
-                                В стоимость не входит: входные билеты и питание
+                                    {% for modal in modal_texts %}
+                                        <li>
+                                            <strong>Длительность:</strong> {{ modal.how_long }}<br>
+                                            <strong>Локации:</strong> {{ modal.name_place }}<br>
+                                            <strong>Выезд:</strong> {{ modal.time_to_departure }}<br>
+                                            <strong>Дней и ночей:</strong> {{ modal.how_many_day_and_night }}<br>
+                                            <strong>Цена (рус):</strong> {{ modal.price_russian }} ₽<br>
+                                            <strong>Цена (англ):</strong> {{ modal.price_english }} ₽<br>
+                                            <strong>Что взять с собой:</strong> {{ modal.take_with_you }}<br>
+                                            <strong>Не включено:</strong> {{ modal.what_is_not_included_in_price }}
+                                        </li>
+                                    {% endfor %}
                               </div>
                               <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-primary">Оставить заявку</button>
                               </div>
                             </div>
                           </div>
@@ -166,5 +144,6 @@
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/script_2.js' %}"></script>
 </body>
 </html>

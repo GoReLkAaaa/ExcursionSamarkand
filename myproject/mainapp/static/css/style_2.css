@@ -236,3 +236,88 @@ input {
     margin-right: 40px;
     margin-top: 27px;
 }
+
+.scroll-to-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    margin-right: 30px;
+    margin-top: 270px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 34px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s, transform 0.3s ease-in;
+    z-index: 1000;
+}
+
+.scroll-to-top:hover {
+    background-color: #dcdce1;
+}
+
+.scroll-to-top.show {
+    display: block;
+}
+
+.scroll_button{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: auto;
+    position: absolute;
+}
+
+.modal-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.modal-body p{
+    color: #FFFFFF;
+}
+
+.modal{
+    background-color: rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content{
+    background-color: #D1B78A;
+}
+
+.modal-footer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.modal-footer button{
+    background-color: #FFFFFF;
+    color: #D1B78A;
+    width: 150px;
+    height: 50px;
+    border: solid 2px #FFFFFF;
+    transition: all 0.5s linear;
+}
+
+.modal-footer button:hover{
+    background-color: rgba(241, 237, 237, 0.62);
+    border: solid 2px black;
+    color: black;
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: rgba(209, 183, 138, 0.67);!important;
+    border: solid 1px #FFFFFF;!important;
+}

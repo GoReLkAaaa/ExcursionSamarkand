@@ -7,6 +7,7 @@
     <title>Phoenix wings</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" href="{% static 'icon/logo.svg' %}" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,6 +66,11 @@
     </div>
 </header>
 <body style="background-color: #D1B78A; display: flex; flex-direction: column">
+    <div class="scroll_button">
+            <div id="scrollToTop" class="scroll-to-top">
+                ↑
+            </div>
+    </div>
     <div class="main_content" id="about">
         <div class="card_1">
             <img src="{% static 'img/woman.jpg' %}" alt="" >
@@ -89,7 +95,7 @@
                                             <div class="content">
                                                 <div class="name">{{ city.name }}</div>
                                                 <div class="des" style="width: 300px">{{ city.description }}</div>
-                                                <button  onclick="window.location.href='{% url 'catalog' city.id %}'">Экскурсии</button>
+                                                <button  onclick="window.location.href='{% url 'catalog' city.id  %}'">Экскурсии</button>
                                             </div>
                                         </div>
                                     {% endfor %}

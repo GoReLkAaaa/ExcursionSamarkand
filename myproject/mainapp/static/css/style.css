@@ -17,12 +17,53 @@ header{
 .header_main a{
     font-family: Roboto, serif;
     font-size: 15px;
-    color: white;
+    color: #FFFFFF;
     transition: all 0.3s ease-in-out;
 }
 
-.header_main a:hover{
-    color: #838080;
+.nav-link:active {
+    color: #ffffff !important;
+}
+
+.nav-link:after{
+    color: #FFFFFF;
+}
+
+.scroll-to-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    margin-right: 30px;
+    margin-top: 570px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 34px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s, transform 0.3s ease-in;
+    z-index: 1000;
+}
+
+.scroll-to-top:hover {
+    background-color: #dcdce1;
+}
+
+.scroll-to-top.show {
+    display: block;
+}
+
+.scroll_button{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: auto;
+    position: absolute;
 }
 
 .content_1{
@@ -441,4 +482,3 @@ input {
   background: transparent;
   color: white;
 }
-

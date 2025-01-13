@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import MainDeskription, CatalogEkskursii
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import MainDeskription, CatalogEkskursii, ModalText
 from django.core.mail import EmailMessage
 from django.http import Http404
 
@@ -36,9 +36,11 @@ def index_2(request, id):
         templates = 'mainapp/index_2.html'
         name_city = MainDeskription.objects.get(id=id)
         exccurs = CatalogEkskursii.objects.filter(main_id=id)
+        modal_text = CatalogEkskursii.modal_texts.objects.all()
         context = {
             'name_city': name_city,
             'excurs': exccurs,
+            'modal_text': modal_text,
         }
         if not exccurs.exists():
             raise Http404('Ничего не найдено')
