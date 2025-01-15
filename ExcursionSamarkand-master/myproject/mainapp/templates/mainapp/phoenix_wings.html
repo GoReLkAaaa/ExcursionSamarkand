@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phoenix wings</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'icon/logo.svg' %}" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+  <div class="header_main container-fluid">
+    <!-- Логотип -->
+    <div class="header_logo">
+        <img src="{% static 'icon/logo.svg' %}" alt="Логотип" width="50px">
+    </div>
+
+    <!-- Обычное меню (для больших экранов) -->
+    <ul class="menu-links">
+        <li><a href="#about" class="menu-item">О Самарканде</a></li>
+        <li><a href="#travel" class="menu-item">Экскурсии</a></li>
+        <li><a href="#contact" class="menu-item">Контакты</a></li>
+    </ul>
+
+    <!-- Бургер-меню (для мобильных экранов) -->
+    <div class="menu">
+        <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+        <label for="burger-checkbox" class="burger"></label>
+        <ul class="menu-list">
+            <li><a href="#about" class="menu-item">О Самарканде</a></li>
+            <li><a href="#travel" class="menu-item">Экскурсии</a></li>
+            <li><a href="#contact" class="menu-item">Контакты</a></li>
+        </ul>
+    </div>
+  </div>
+        <div class="main_1 d-flex justify-content-center align-items-center">
+        <div class="content_1">
+            <div class="cart" style="z-index: 1">
+                <img src="{% static 'img/udostoverenie.jpg' %}" alt="Удостоверение", class="img_siya">
+            </div>
+            <div class="text" style="z-index: 1">
+                <div class="zagolovok">
+                    <h1>Ташкент — Сердце Средней Азии</h1>
+                </div>
+                <div class="text_osnova">
+                    <p>    Здравствуйте! 
+Готовы к путешествию? Тогда вперед!
+Меня зовут Сиявуш, мы собрали команду гидов, каждый из которых, влюблен в свой город. 
+Мы с Вами погрузимся в мир: традиций, праздников, обычай которые Вас удивят.
+С глубоким знанием истории и культуры, мы расскажем увлекательные рассказы о Ташкенте, Коканде, Самарканде, Бухаре и Хиве.
+Давайте отправимся в путь вместе и создадим воспоминания, которые останутся в Ваших сердцах навсегда!</p>
+                </div>
+                <div class="bid">
+                    <a href="#form_bid">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<body style="background-color: #D1B78A; display: flex; flex-direction: column">
+    <div class="main_content" id="about">
+        <div class="card_1">
+            <img src="{% static 'img/woman.jpg' %}" alt="" >
+                <p>Эдем Востока, хранимый Аллахом, все эти эпитеты о Самарканде,
+                столице великой империи Тамерлана ведь не зря
+                Великий завоеватель обратил свой взор именно на Самарканд!
+                Обилие мозаик, элементов резной поливной терракоты,
+                майолики, монументальность построек не оставит Вас равнодушным!</p>
+        </div>
+        <div class="card_2">
+            <p>Все, что я слышал о красоте Самарканда, все правда,
+                за исключением того, что город оказался более красив,
+                чем я мог представить "Не даром Александр Македонский восклицал эти слова"</p>
+            <img src="{% static 'img/photo_21.svg' %}" alt="" >
+        </div>
+    </div>
+    <div class="main_content_2" id="travel" style="overflow-x: hidden">
+                    <div class="container" style="overflow-x: hidden">
+                            <div class="slide">
+                                    {% for city in maincontent %}
+                                        <div class="item" style="background-image: url({{ city.image_city.url }});">
+                                            <div class="content">
+                                                <div class="name">{{ city.name }}</div>
+                                                <div class="des" style="width: 300px">{{ city.description }}</div>
+                                                <button  onclick="window.location.href='{% url 'catalog' city.id %}'">Экскурсии</button>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                            </div>
+                            <div class="button">
+                                <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+                                <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                    </div>
+    </div>
+<div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
+    <div class="content_form" id="form_bid">
+        <div class="form-container">
+            <h2>Связаться со мной</h2>
+            <form action="" method="POST" style="padding-top: 80px">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <input type="text" id="name" placeholder=" " required name="name">
+                    <label for="name">Имя</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="tel" id="phone" placeholder=" " required name="phone">
+                    <label for="phone">Телефон</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="city" placeholder=" " required name="city">
+                    <label for="city">Город</label>
+                  </div>
+                    <input type="text" name="honeypot" style="display: none">
+                  <button type="submit">Оставить заявку</button>
+            </form>
+          </div>
+        <div class="connection">
+            <h3>Контакты</h3>
+            <span>Телефон:+998 90 997 01 98</span>
+            <span>Email: bysiyavush@gmail.com</span>
+            <div class="d-flex flex-row justify-content-around logotip">
+                <a href="https://t.me/bySiyavush">
+                    <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
+                    <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
+                    <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.facebook.com/share/15cDKoRAxz/">
+                    <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer style="height: 70px; background-color: rgba(28,23,23,0.4)" class="d-flex justify-content-center align-items-center col-12 container-fluid">
+    <span style="font-family: Roboto, serif">©2024. Все права защищены</span>
+</footer>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+<script>
+  // Получаем все пункты меню
+  const menuItems = document.querySelectorAll('.menu-item');
+  const burgerCheckbox = document.querySelector('.burger-checkbox');
+  
+  // Добавляем обработчик событий для каждого пункта меню
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      // Снимаем галочку с чекбокса при клике на пункт меню
+      burgerCheckbox.checked = false;
+    });
+  });
+</script>
+</body>
+</html>

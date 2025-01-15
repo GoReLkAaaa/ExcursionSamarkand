@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #D1B78A;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 8rem;
+            margin: 0;
+        }
+        h2 {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+        p {
+            font-size: 1rem;
+            margin: 10px 0 120px;
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        a:hover {
+            background: rgba(7, 4, 4, 0.5);
+            color: #ffffff;
+            border: solid 2px #FFFFFF;
+        }        .animation {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+body>
+    <div class="container">
+        <div class="animation"><img src="{% static 'icon/logo.svg'%}"></div>
+        <h1>404</h1>
+        <h2>Ууупс! Страница не найдена</h2>
+        <p>Похоже, мы не можем найти страницу, которую вы ищете. Возможно, она была удалена или временно недоступна.</p>
+        <a href="{% url 'phoenix_wings' %}">Вернутся назад</a>
+    </div>
+</body>
+</html>

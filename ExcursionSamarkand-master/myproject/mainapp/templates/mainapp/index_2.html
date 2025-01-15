@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phoenix wings</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_2.css' %}">
+    <link rel="icon" href="{% static 'icon/logo.svg' %}" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+
+  <div class="header_main container-fluid">
+    <!-- Логотип -->
+    <div class="header_logo">
+        <img src="{% static 'icon/logo.svg' %}" alt="Логотип" width="50px">
+    </div>
+
+    <!-- Обычное меню (для больших экранов) -->
+    <ul class="menu-links">
+      <li><a href="{% url 'phoenix_wings' %}" class="menu-item">На главную</a></li>
+        <li><a href="#contact" class="menu-item">Контакты</a></li>
+    </ul>
+  </div>
+    <!--<div class="header_main col-12 container-fluid">-->
+    <!--    <div class="d-flex justify-content-center align-items-center">-->
+    <!--        <img src="{% static 'icon/logo.svg' %}" alt="Логотип" width="50px">-->
+    <!--    </div>-->
+    <!--    <nav class="navbar navbar-expand-lg">-->
+    <!--      <div class="container-fluid">-->
+    <!--        <a class="nav-link" href="{% url 'phoenix_wings' %}">На главную</a>-->
+    <!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--          <span class="navbar-toggler-icon"></span>-->
+    <!--        </button>-->
+    <!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+    <!--          <ul class="navbar-nav">-->
+    <!--            <li class="nav-item">-->
+    <!--              <a class="nav-link" href="#contact">Контакты</a>-->
+    <!--            </li>-->
+    <!--          </ul>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </nav>-->
+    <!-- </div>-->
+</header>
+<main>
+            <div class="name_city">
+                <h1>{{ name_city.name }}</h1>
+                <div class="poloska"></div>
+                <h1>Экскурсии</h1>
+            </div>
+            <div class="main_exc">
+                {% for exc in excurs %}
+                    <div class="cart_excurs">
+                        <img src="{{ exc.image_excursion.url }}" alt="">
+                        <span>Экскурсия {{ exc.name_excursion }}</span>
+                        <span>Цена {{ exc.price_excursion }}$</span>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary button_modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Подробнее
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                Тур «Ташкент - Бухара - Самарканд - Шахрисабз - Ташкент»
+
+                                (3 дня и 2 ночи)
+
+                                Экскурсия в Бухаре:
+                                📍Боло хауза
+                                📍Смотровая башня( шуховская башня )
+                                📍Арк
+                                📍Комплекс пои калон
+                                📍Комплекс кош мадраса
+                                📍Торговые купола 4объекта
+                                📍Мечеть Магоки атори
+                                📍Лаби хауз комплекс и ремесленнические центры по пути к экскурсии
+
+                                Экскурсия в Самарканде
+                                📍Гури Амир
+                                📍Регистан
+                                📍Святой Даниил
+                                📍Шохи Зинда
+                                📍Обсервотрия Улугбека
+
+                                по выбору
+                                📍Производство бумаг
+                                📍Производство ковров
+                                📍Производство вин
+
+                                Экскурсия в Шахрисабз
+                                📍Долина Демонов и перевал Китаб
+                                📍Обед на перевале
+                                📍Дворец Ак Сарай
+                                📍Мемориальный комплекс Дорус Тилловат
+                                📍Комплекс Дорус Саодат
+
+                                За три дня и две ночи
+                                Стоимость до 3 человек, язык:
+                                Русский 740$
+                                English 770$
+
+                                В стоимость не входит: входные билеты и питание
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    <div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
+    <div class="content_form" id="form_bid">
+        <div class="form-container">
+            <h2>Связаться со мной</h2>
+            <form action="" method="POST" style="padding-top: 80px">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <input type="text" id="name" placeholder=" " required name="name">
+                    <label for="name">Имя</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="tel" id="phone" placeholder=" " required name="phone">
+                    <label for="phone">Телефон</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="city" placeholder=" " required name="city">
+                    <label for="city">Город</label>
+                  </div>
+                    <input type="text" name="honeypot" style="display: none">
+                  <button type="submit">Оставить заявку</button>
+            </form>
+          </div>
+        <div class="connection">
+            <h3>Контакты</h3>
+            <span>Телефон:+998 90 997 01 98</span>
+            <span>Email: bysiyavush@gmail.com</span>
+            <div class="d-flex flex-row justify-content-around logotip">
+                <a href="https://t.me/bySiyavush">
+                    <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
+                    <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
+                    <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.facebook.com/share/15cDKoRAxz/">
+                    <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+<footer style="height: 70px; background-color: rgba(28,23,23,0.4)" class="d-flex justify-content-center align-items-center col-12 container-fluid">
+    <span style="font-family: Roboto, serif">©2024. Все права защищены</span>
+</footer>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+</body>
+</html>
