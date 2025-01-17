@@ -35,14 +35,12 @@ def index_2(request, id):
     if request.method == 'GET':
         templates = 'mainapp/index_2.html'
         name_city = MainDeskription.objects.get(id=id)
-        exccurs = CatalogEkskursii.objects.filter(main_id=id)
-        modal_text = CatalogEkskursii.modal_texts.objects.all()
+        excurs = CatalogEkskursii.objects.prefetch_related('modal_texts').filter(main_id=id)
         context = {
             'name_city': name_city,
-            'excurs': exccurs,
-            'modal_text': modal_text,
+            'excurs': excurs,
         }
-        if not exccurs.exists():
+        if not excurs.exists():
             raise Http404('Ничего не найдено')
         return render(request, templates, context)
     else:

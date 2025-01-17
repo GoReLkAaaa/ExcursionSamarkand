@@ -24,6 +24,7 @@ handler404 = 'mainapp.views.error_404'
 urlpatterns = [
     path('admin-secret-adminsyte/', admin.site.urls),
     path('', include('mainapp.urls')),
+    path('summennote/', include('django_summernote.urls')),
 ]
 
 if settings.DEBUG:

@@ -51,45 +51,48 @@
                 <h1>Экскурсии</h1>
             </div>
             <div class="main_exc">
-                {% for exc in excurs %}
-                    <div class="cart_excurs">
-                        <img src="{{ exc.image_excursion.url }}" alt="">
-                        <span>Экскурсия {{ exc.name_excursion }}</span>
-                        <span>Цена {{ exc.price_excursion }}$</span>
-                        <button type="button" class="btn btn-primary button_modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                          Подробнее
-                        </button>
+            {% for exc in excurs %}
+                <div class="cart_excurs" id="excursion-{{ exc.id }}">
+                    <img src="{{ exc.image_excursion.url }}" alt="Изображение экскурсии">
+                    <span>Экскурсия {{ exc.name_excursion }}</span>
+                    <span>Цена {{ exc.price_excursion }}$</span>
+                    <button type="button" class="btn btn-primary button_modal" data-bs-toggle="modal" data-bs-target="#modal-{{ exc.id }}">
+                        Подробнее
+                    </button>
 
-
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
+                    <!-- Модальное окно -->
+                    <div class="modal fade" id="modal-{{ exc.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ exc.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
                             <div class="modal-content">
-                              <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: #FFFFFF">{{ name_city.name }}</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                    {% for modal in modal_texts %}
-                                        <li>
-                                            <strong>Длительность:</strong> {{ modal.how_long }}<br>
-                                            <strong>Локации:</strong> {{ modal.name_place }}<br>
-                                            <strong>Выезд:</strong> {{ modal.time_to_departure }}<br>
-                                            <strong>Дней и ночей:</strong> {{ modal.how_many_day_and_night }}<br>
-                                            <strong>Цена (рус):</strong> {{ modal.price_russian }} ₽<br>
-                                            <strong>Цена (англ):</strong> {{ modal.price_english }} ₽<br>
-                                            <strong>Что взять с собой:</strong> {{ modal.take_with_you }}<br>
-                                            <strong>Не включено:</strong> {{ modal.what_is_not_included_in_price }}
-                                        </li>
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="modalLabel-{{ exc.id }}" style="color: #FFFFFF">
+                                        {{ name_city.name }}
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {% for modal in exc.modal_texts.all %}
+                                        <p><strong>Что взять с собой:</strong> {{ modal.take_with_you }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
+                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
                                     {% endfor %}
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Оставить заявку</button>
-                              </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">Оставить заявку</button>
+                                </div>
                             </div>
-                          </div>
                         </div>
                     </div>
-                {% endfor %}
+                </div>
+            {% endfor %}
+
             </div>
     <div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
     <div class="content_form" id="form_bid">
