@@ -20,11 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 handler404 = 'mainapp.views.error_404'
+_handler404 = 'eng_mainapp.views.error_404'
 
 urlpatterns = [
     path('admin-secret-adminsyte/', admin.site.urls),
     path('', include('mainapp.urls')),
     path('summennote/', include('django_summernote.urls')),
+    path('eng_mainapp/', include('eng_mainapp.urls')),
 ]
 
 if settings.DEBUG:

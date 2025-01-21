@@ -17,12 +17,14 @@ def index(request):
         name = request.POST['name']
         phone = request.POST['phone']
         city = request.POST['city']
+        ekskurs = request.POST['ekskurs']
         email = 'nikitospogorelyn@gmail.com'
         try:
             subject = f'Новая заявка на экскурсию'
             message = f'Здравствуйте меня зовут {name} \n\n'
             message += f'Мой номер телефона {phone} \n\n'
             message += f'Я хочу поседить {city} \n\n'
+            message += f'Я выбираю экскурсию {ekskurs} \n\n'
             mail = EmailMessage(subject=subject, body=message, to=[email])
             mail.send()
             return redirect('phoenix_wings')
@@ -47,12 +49,14 @@ def index_2(request, id):
         name = request.POST['name']
         phone = request.POST['phone']
         city = request.POST['city']
+        ekskurs = request.POST['ekskurs']
         email = 'nikitospogorelyn@gmail.com'
         try:
             subject = f'Новая заявка на экскурсию'
             message = f'Здравствуйте меня зовут {name} \n\n'
             message += f'Мой номер телефона {phone} \n\n'
             message += f'Я хочу поседить {city} \n\n'
+            message += f'Я выбираю экскурсию {ekskurs} \n\n'
             mail = EmailMessage(subject=subject, body=message, to=[email])
             mail.send()
             return redirect('catalog', id=id)

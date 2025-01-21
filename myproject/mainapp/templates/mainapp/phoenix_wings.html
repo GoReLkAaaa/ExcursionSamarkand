@@ -24,6 +24,24 @@
             <img src="{% static 'icon/logo.svg' %}" alt="Логотип" width="50px">
         </div>
         <nav class="navbar navbar-expand-lg">
+            <div class="custom-dropdown">
+                <div class="custom-dropdown-toggle" onclick="toggleDropdown()">
+                    <img src="{% static 'img/flag-for-russia.svg' %}" alt="Russian">
+                    <span>Русский</span>
+                </div>
+                <div class="custom-dropdown-menu">
+                    <a href="{% url 'phoenix_wings' %}" style="text-decoration: none">
+                        <div class="custom-dropdown-item" onclick="selectLanguage('Русский', '{% static 'img/flag-for-russian.svg' %}')">
+                            <img src="{% static 'img/flag-for-russia.svg' %}" alt="Russian"> Russian
+                        </div>
+                    </a>
+                    <a href="{% url 'phoenix_wings_en' %}" style="text-decoration: none">
+                        <div class="custom-dropdown-item" onclick="selectLanguage('English', '{% static 'img/us.svg' %}')">
+                            <img src="{% static 'img/us.svg' %}" alt="English">English
+                        </div>
+                    </a>
+                </div>
+            </div>
           <div class="container-fluid">
             <a class="nav-link" href="#about">О Самарканде</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,6 +141,10 @@
                   <div class="form-group">
                     <input type="text" id="city" placeholder=" " required name="city">
                     <label for="city">Город</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="city" placeholder=" " required name="ekskurs">
+                    <label for="city">Экскурсия</label>
                   </div>
                     <input type="text" name="honeypot" style="display: none">
                   <button type="submit">Оставить заявку</button>

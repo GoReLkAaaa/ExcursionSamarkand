@@ -482,3 +482,61 @@ input {
   background: transparent;
   color: white;
 }
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-dropdown-toggle {
+    padding: 10px 35px;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 150px;
+    font-size: 14px;
+}
+
+.custom-dropdown-toggle img {
+    width: 20px;
+    height: 20px;
+}
+
+.custom-dropdown-menu {
+    display: none;
+    position: absolute;
+    border-radius: 10%;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный фон */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 150px;
+}
+
+.custom-dropdown-menu.show {
+    display: block;
+}
+
+.custom-dropdown-item {
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 18%;
+}
+
+.custom-dropdown-item img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.custom-dropdown-item:hover {
+    color: #000; /* Текст становится чёрным при наведении */
+    background-color: rgba(255, 255, 255, 0.3); /* Лёгкий белый фон */
+}

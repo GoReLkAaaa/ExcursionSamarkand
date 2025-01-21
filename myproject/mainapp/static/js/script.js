@@ -41,3 +41,30 @@ $(document).ready(function () {
         $('html, body').animate({ scrollTop: 0 }, 800);
     });
 });
+
+
+function toggleDropdown() {
+    const menu = document.querySelector('.custom-dropdown-menu');
+    menu.classList.toggle('show');
+}
+
+function selectLanguage(language, flagUrl) {
+    // Меняем текст и картинку в кнопке
+    const toggle = document.querySelector('.custom-dropdown-toggle');
+    toggle.innerHTML = `
+        <img src="${flagUrl}" alt="${language}">
+        <span>${language}</span>
+    `;
+
+    // Закрываем выпадающий список
+    const menu = document.querySelector('.custom-dropdown-menu');
+    menu.classList.remove('show');
+}
+
+// Закрыть выпадающий список при клике вне его
+document.addEventListener('click', (event) => {
+    const dropdown = document.querySelector('.custom-dropdown');
+    if (!dropdown.contains(event.target)) {
+        document.querySelector('.custom-dropdown-menu').classList.remove('show');
+    }
+});

@@ -13,4 +13,4 @@ class ModalTextAdmin(SummernoteModelAdmin):
 
 admin.site.register(MainDeskription)
 admin.site.register(CatalogEkskursii)
-admin.site.register(ModalText)
+admin.site.register(ModalText, ModalTextAdmin   )

@@ -40,110 +40,136 @@
      </div>
 </header>
 <main>
-            <div class="scroll_button">
-                    <div id="scrollToTop" class="scroll-to-top">
-                        ↑
-                    </div>
+    <div class="scroll_button">
+            <div id="scrollToTop" class="scroll-to-top">
+                ↑
             </div>
-            <div class="name_city">
-                <h1>{{ name_city.name }}</h1>
-                <div class="poloska"></div>
-                <h1>Экскурсии</h1>
-            </div>
-            <div class="main_exc">
-            {% for exc in excurs %}
-                <div class="cart_excurs" id="excursion-{{ exc.id }}">
-                    <img src="{{ exc.image_excursion.url }}" alt="Изображение экскурсии">
-                    <span>Экскурсия {{ exc.name_excursion }}</span>
-                    <span>Цена {{ exc.price_excursion }}$</span>
-                    <button type="button" class="btn btn-primary button_modal" data-bs-toggle="modal" data-bs-target="#modal-{{ exc.id }}">
-                        Подробнее
-                    </button>
+    </div>
+    <div class="name_city">
+        <h1>{{ name_city.name }}</h1>
+        <div class="poloska"></div>
+        <h1>Экскурсии</h1>
+    </div>
+    <div class="main_exc">
+        {% for exc in excurs %}
+            <div class="cart_excurs" id="excursion-{{ exc.id }}">
+                <img src="{{ exc.image_excursion.url }}" alt="Изображение экскурсии">
+                <span id="ekskursion-name-{{ exc.id }}">Экскурсия {{ exc.name_excursion }}</span>
+                <span>Цена {{ exc.price_excursion }}$</span>
+                <button type="button" class="btn btn-primary button_modal" data-bs-toggle="modal" data-bs-target="#modal-{{ exc.id }}">
+                    Подробнее
+                </button>
 
-                    <!-- Модальное окно -->
-                    <div class="modal fade" id="modal-{{ exc.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ exc.id }}" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="modalLabel-{{ exc.id }}" style="color: #FFFFFF">
-                                        {{ name_city.name }}
-                                    </h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-                                </div>
-                                <div class="modal-body">
-                                    {% for modal in exc.modal_texts.all %}
-                                        <p><strong>Что взять с собой:</strong> {{ modal.take_with_you }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                        <p><strong>Длительность:</strong> {{ modal.how_long }}</p>
-                                    {% endfor %}
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary">Оставить заявку</button>
-                                </div>
+                <!-- Модальное окно -->
+                <div class="modal fade" id="modal-{{ exc.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ exc.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalLabel-{{ exc.id }}" style="color: #FFFFFF">
+                                    {{ name_city.name }}
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body">
+                                {% for modal in exc.modal_texts.all %}
+                                    <p>{{ exc.name_excursion }}</p>
+                                    <p>{{ modal.how_long }}</p>
+                                    <p>{{ modal.name_place|safe }}</p>
+                                    <p>{{ modal.time_to_departure }}</p>
+                                    <p>{{ modal.take_with_you|safe }}</p>
+                                    <p>{{ modal.how_many_day_and_night }}</p>
+                                    <p>Стоимость до {{ modal.how_many_people }} человек, язык:</p>
+                                    <p>Русский-{{ modal.price_russian }}$</p>
+                                    <p>English-{{ modal.price_english }}$</p>
+                                    <p>В стоимость не входит: {{ modal.what_is_not_included_in_price }}</p>
+                                {% endfor %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary"  onclick="scrollToContact('{{ exc.name_excursion }}')">Оставить заявку</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-
             </div>
+        {% endfor %}
+    </div>
     <div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
-    <div class="content_form" id="form_bid">
-        <div class="form-container">
-            <h2>Связаться со мной</h2>
-            <form action="" method="POST" style="padding-top: 80px">
-                {% csrf_token %}
-                  <div class="form-group">
-                    <input type="text" id="name" placeholder=" " required name="name">
-                    <label for="name">Имя</label>
-                  </div>
-                  <div class="form-group">
-                    <input type="tel" id="phone" placeholder=" " required name="phone">
-                    <label for="phone">Телефон</label>
-                  </div>
-                  <div class="form-group">
-                    <input type="text" id="city" placeholder=" " required name="city">
-                    <label for="city">Город</label>
-                  </div>
-                    <input type="text" name="honeypot" style="display: none">
-                  <button type="submit">Оставить заявку</button>
-            </form>
-          </div>
-        <div class="connection">
-            <h3>Контакты</h3>
-            <span>Телефон:+998 90 997 01 98</span>
-            <span>Email: bysiyavush@gmail.com</span>
-            <div class="d-flex flex-row justify-content-around logotip">
-                <a href="https://t.me/bySiyavush">
-                    <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
-                </a>
+        <div class="content_form" id="form_bid">
+            <div class="form-container">
+                <h2>Связаться со мной</h2>
+                <form action="" method="POST" style="padding-top: 80px">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder=" " required name="name">
+                            <label for="name">Имя</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder=" " required name="phone">
+                            <label for="phone">Телефон</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="city" placeholder=" " required name="city" value="{{ name_city.name }}">
+                            <label for="city">Город</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="excursion" placeholder=" " required name="ekskurs">
+                            <label for="city">Экскурсия</label>
+                        </div>
+                        <input type="text" name="honeypot" style="display: none">
+                        <button type="submit">Оставить заявку</button>
+                </form>
+            </div>
+            <div class="connection">
+                <h3>Контакты</h3>
+                <span>Телефон:+998 90 997 01 98</span>
+                <span>Email: bysiyavush@gmail.com</span>
+                <div class="d-flex flex-row justify-content-around logotip">
+                    <a href="https://t.me/bySiyavush">
+                        <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
+                    </a>
 
-                <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
-                    <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
-                </a>
+                    <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
+                        <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
+                    </a>
 
-                <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
-                    <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
-                </a>
+                    <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
+                        <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
+                    </a>
 
-                <a href="https://www.facebook.com/share/15cDKoRAxz/">
-                    <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
-                </a>
+                    <a href="https://www.facebook.com/share/15cDKoRAxz/">
+                        <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </main>
 <footer style="height: 70px; background-color: rgba(28,23,23,0.4)" class="d-flex justify-content-center align-items-center col-12 container-fluid">
     <span style="font-family: Roboto, serif">©2024. Все права защищены</span>
 </footer>
+<script>
+    function scrollToContact(excursionName) {
+        const modal = document.querySelector('.modal.show');
+        if (modal) {
+            const bootstrapModal = bootstrap.Modal.getInstance(modal);
+            modal.addEventListener('hidden.bs.modal', function () {
+                fillExcursion(excursionName);
+            });
+            bootstrapModal.hide();
+        } else {
+            fillExcursion(excursionName);
+        }
+    }
+
+    function fillExcursion(excursionName) {
+        const contactElement = document.getElementById('contact');
+        contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const excursionField = document.getElementById('excursion');
+        excursionField.value = excursionName;
+    }
+</script>
+
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/popper.js' %}"></script>

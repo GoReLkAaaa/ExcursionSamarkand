@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phoenix wings</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style_2.css' %}">
+    <link rel="icon" href="{% static 'icon/logo.svg' %}" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="header_main col-12 container-fluid">
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="{% static 'icon/logo.svg' %}" alt="Логотип" width="50px">
+        </div>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="nav-link" href="{% url 'phoenix_wings_en' %}">Go back</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">Contacts</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+     </div>
+</header>
+<main>
+    <div class="scroll_button">
+            <div id="scrollToTop" class="scroll-to-top">
+                ↑
+            </div>
+    </div>
+    <div class="name_city">
+        <h1>{{ name_city.name_en }}</h1>
+        <div class="poloska"></div>
+        <h1>Excursions</h1>
+    </div>
+    <div class="main_exc">
+        {% for exc in excurs %}
+            <div class="cart_excurs" id="excursion-{{ exc.id }}">
+                <img src="{{ exc.image_excursion_en.url }}" alt="Изображение экскурсии">
+                <span id="ekskursion-name-{{ exc.id }}">Excursion {{ exc.name_excursion_en }}</span>
+                <span>Price {{ exc.price_excursion_en }}$</span>
+                <button type="button" class="btn btn-primary button_modal" data-bs-toggle="modal" data-bs-target="#modal-{{ exc.id }}">
+                    Read more
+                </button>
+
+                <!-- Модальное окно -->
+                <div class="modal fade" id="modal-{{ exc.id }}" tabindex="-1" aria-labelledby="modalLabel-{{ exc.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalLabel-{{ exc.id }}" style="color: #FFFFFF">
+                                    {{ name_city.name_en }}
+                                </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                            </div>
+                            <div class="modal-body">
+                                {% for modal in exc.modal_texts.all %}
+                                    <p>{{ exc.name_excursion_en }}</p>
+                                    <p>{{ modal.how_long_en }}</p>
+                                    <p>{{ modal.name_place_en|safe }}</p>
+                                    <p>{{ modal.time_to_departure_en }}</p>
+                                    <p>{{ modal.take_with_you_en|safe }}</p>
+                                    <p>{{ modal.how_many_day_and_night_en }}</p>
+                                    <p>Cost up to {{ modal.how_many_people_en }} man, language:</p>
+                                    <p>Russian-{{ modal.price_russian_en }}$</p>
+                                    <p>English-{{ modal.price_english_en }}$</p>
+                                    <p>The price does not include: {{ modal.what_is_not_included_in_price_en }}</p>
+                                {% endfor %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary"  onclick="scrollToContact('{{ exc.name_excursion_en }}')">Leave a request</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
+        <div class="content_form" id="form_bid">
+            <div class="form-container">
+                <h2>Contact me</h2>
+                <form action="" method="POST" style="padding-top: 80px">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder=" " required name="name">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder=" " required name="phone">
+                            <label for="phone">Telephone</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="city" placeholder=" " required name="city" value="{{ name_city.name_en }}">
+                            <label for="city">City</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="excursion" placeholder=" " required name="ekskurs">
+                            <label for="city">Excursion</label>
+                        </div>
+                        <input type="text" name="honeypot" style="display: none">
+                        <button type="submit">Leave a request</button>
+                </form>
+            </div>
+            <div class="connection">
+                <h3>Contacts</h3>
+                <span>Telephone:+998 90 997 01 98</span>
+                <span>Email: bysiyavush@gmail.com</span>
+                <div class="d-flex flex-row justify-content-around logotip">
+                    <a href="https://t.me/bySiyavush">
+                        <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
+                    </a>
+
+                    <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
+                        <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
+                    </a>
+
+                    <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
+                        <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
+                    </a>
+
+                    <a href="https://www.facebook.com/share/15cDKoRAxz/">
+                        <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer style="height: 70px; background-color: rgba(28,23,23,0.4)" class="d-flex justify-content-center align-items-center col-12 container-fluid">
+    <span style="font-family: Roboto, serif">©2024. All rights reserved</span>
+</footer>
+<script>
+    function scrollToContact(excursionName) {
+        const modal = document.querySelector('.modal.show');
+        if (modal) {
+            const bootstrapModal = bootstrap.Modal.getInstance(modal);
+            modal.addEventListener('hidden.bs.modal', function () {
+                fillExcursion(excursionName);
+            });
+            bootstrapModal.hide();
+        } else {
+            fillExcursion(excursionName);
+        }
+    }
+
+    function fillExcursion(excursionName) {
+        const contactElement = document.getElementById('contact');
+        contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        const excursionField = document.getElementById('excursion');
+        excursionField.value = excursionName;
+    }
+</script>
+
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/script_2.js' %}"></script>
+</body>
+</html>

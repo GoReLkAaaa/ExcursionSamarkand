@@ -43,11 +43,11 @@ class CatalogEkskursii(models.Model):
 class ModalText(models.Model):
     how_long = models.CharField(max_length=100,
                 verbose_name='Сколько длится поездка')
-    name_place = models.TextField(max_length=1500,
+    name_place = models.TextField(max_length=5500,
                 verbose_name='Название локаций и места на выбор с указанием времени')
     time_to_departure = models.CharField(max_length=100,
                 verbose_name='Во сколько выезд')
-    take_with_you = models.TextField(max_length=500,
+    take_with_you = models.TextField(max_length=1500,
                 verbose_name='Что взять с собой')
     how_many_day_and_night = models.CharField(max_length=100,
                 verbose_name='За сколько дней и ночей')
@@ -63,7 +63,7 @@ class ModalText(models.Model):
                 verbose_name='К какой экскурсии отосится')
 
     def __str__(self):
-        return self.name_place
+        return self.modal_ekskurs_name.name_excursion
 
 
     class Meta:

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phoenix wings</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'icon/logo.svg' %}" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="header_main col-12 container-fluid">
+        <div class="d-flex justify-content-center align-items-center">
+            <img src="{% static 'icon/logo.svg' %}" alt="Логотип" width="50px">
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="custom-dropdown">
+                <div class="custom-dropdown-toggle" onclick="toggleDropdown()">
+                    <img src="{% static 'img/flag-for-russia.svg' %}" alt="Russian">
+                    <span>Russian</span>
+                </div>
+                <div class="custom-dropdown-menu">
+                    <a href="{% url 'phoenix_wings' %}" style="text-decoration: none">
+                        <div class="custom-dropdown-item" onclick="selectLanguage('Русский', '{% static 'img/flag-for-russian.svg' %}')">
+                            <img src="{% static 'img/flag-for-russia.svg' %}" alt="Russian"> Russian
+                        </div>
+                    </a>
+                    <a href="{% url 'phoenix_wings_en' %}" style="text-decoration: none">
+                        <div class="custom-dropdown-item" onclick="selectLanguage('English', '{% static 'img/us.svg' %}')">
+                            <img src="{% static 'img/us.svg' %}" alt="English">English
+                        </div>
+                    </a>
+                </div>
+            </div>
+          <div class="container-fluid">
+            <a class="nav-link" href="#about">About Samarkand</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#travel">City Tours</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contact">Contacts</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+     </div>
+    </div>
+        <div class="main_1 d-flex justify-content-center align-items-center">
+        <div class="content_1">
+            <div class="cart" style="z-index: 1">
+                <img src="{% static 'img/udostoverenie.svg' %}" alt="Удостоверение", width="287px">
+            </div>
+            <div class="text" style="z-index: 1">
+                <div class="zagolovok">
+                    <h1>Samarkand - The Heart of Central Asia</h1>
+                </div>
+                <div class="text_osnova">
+                    <p>My name is Siyavush and I will help you discover the unique beauty and secrets of Uzbekistan.
+                        With a deep knowledge of history and culture,
+                        I will guide you through ancient cities and modern attractions,
+                        to make your trip unforgettable.
+                        Let's hit the road and create memories that will stay with you forever!</p>
+                </div>
+                <div class="bid">
+                    <a href="#form_bid">Leave a request</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<body style="background-color: #D1B78A; display: flex; flex-direction: column">
+    <div class="scroll_button">
+            <div id="scrollToTop" class="scroll-to-top">
+                ↑
+            </div>
+    </div>
+    <div class="main_content" id="about">
+        <div class="card_1">
+            <img src="{% static 'img/woman.jpg' %}" alt="" >
+                <p>Eden of the East, protected by Allah, all these epithets about Samarkand,
+                    the capital of the great empire of Tamerlane, it is not for nothing
+                    The great conqueror turned his gaze to Samarkand!
+                    The abundance of mosaics, elements of carved glazed terracotta,
+                    majolica, the monumentality of the buildings will not leave you indifferent!</p>
+        </div>
+        <div class="card_2">
+            <p>Everything I heard about the beauty of Samarkand is true,
+                except that the city turned out to be more beautiful
+                than I could have imagined. "Not for nothing did Alexander the Great exclaim these words"</p>
+            <img src="{% static 'img/photo_21.svg' %}" alt="" >
+        </div>
+    </div>
+    <div class="main_content_2" id="travel" style="overflow-x: hidden">
+                    <div class="container" style="overflow-x: hidden">
+                            <div class="slide">
+                                    {% for city in maincontent_en %}
+                                        <div class="item" style="background-image: url({{ city.image_city_en.url }});">
+                                            <div class="content">
+                                                <div class="name">{{ city.name_en }}</div>
+                                                <div class="des" style="width: 300px">{{ city.description_en }}</div>
+                                                <button  onclick="window.location.href='{% url 'catalog_en' city.id  %}'">Excursions</button>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                            </div>
+                            <div class="button">
+                                <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+                                <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                    </div>
+    </div>
+<div class="main_content_4 d-flex justify-content-center align-items-center" id="contact">
+    <div class="content_form" id="form_bid">
+        <div class="form-container">
+            <h2>Contact me</h2>
+            <form action="" method="POST" style="padding-top: 80px">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <input type="text" id="name" placeholder=" " required name="name">
+                    <label for="name">Name</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="tel" id="phone" placeholder=" " required name="phone">
+                    <label for="phone">Telephone</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="city" placeholder=" " required name="city">
+                    <label for="city">City</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="city" placeholder=" " required name="ekskurs">
+                    <label for="city">Excursion</label>
+                  </div>
+                    <input type="text" name="honeypot" style="display: none">
+                  <button type="submit">Leave a request</button>
+            </form>
+          </div>
+        <div class="connection">
+            <h3>Contacts</h3>
+            <span>Telephone:+998 90 997 01 98</span>
+            <span>Email: bysiyavush@gmail.com</span>
+            <div class="d-flex flex-row justify-content-around logotip">
+                <a href="https://t.me/bySiyavush">
+                    <img src="{% static 'img/telegram.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.instagram.com/by_siyavush/profilecard/?igsh=MnU2bnloMmlpZWIw">
+                    <img src="{% static 'img/instagram.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.youtube.com/channel/UCPJ-Vg0OYeFnjx-bOnlUw-g">
+                    <img src="{% static 'img/youtube.svg' %}" alt="" width="40px">
+                </a>
+
+                <a href="https://www.facebook.com/share/15cDKoRAxz/">
+                    <img src="{% static 'img/facebook.svg' %}" alt="" width="40px">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer style="height: 70px; background-color: rgba(28,23,23,0.4)" class="d-flex justify-content-center align-items-center col-12 container-fluid">
+    <span style="font-family: Roboto, serif">©2024. All rights reserved</span>
+</footer>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
