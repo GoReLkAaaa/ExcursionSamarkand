@@ -108,7 +108,7 @@
     <div class="main_content_2" id="travel" style="overflow-x: hidden">
                     <div class="container" style="overflow-x: hidden">
                             <div class="slide">
-                                    {% for city in maincontent %}
+                                {% for city in maincontent %}
                                         <div class="item" style="background-image: url({{ city.image_city.url }});">
                                             <div class="content">
                                                 <div class="name">{{ city.name }}</div>
@@ -116,7 +116,7 @@
                                                 <button  onclick="window.location.href='{% url 'catalog' city.id  %}'">Экскурсии</button>
                                             </div>
                                         </div>
-                                    {% endfor %}
+                                {% endfor %}
                             </div>
                             <div class="button">
                                 <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>

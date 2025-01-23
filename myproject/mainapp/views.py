@@ -18,7 +18,7 @@ def index(request):
         phone = request.POST['phone']
         city = request.POST['city']
         ekskurs = request.POST['ekskurs']
-        email = 'nikitospogorelyn@gmail.com'
+        email = 'bysiyavush@gmail.com'
         try:
             subject = f'Новая заявка на экскурсию'
             message = f'Здравствуйте меня зовут {name} \n\n'
@@ -50,7 +50,7 @@ def index_2(request, id):
         phone = request.POST['phone']
         city = request.POST['city']
         ekskurs = request.POST['ekskurs']
-        email = 'nikitospogorelyn@gmail.com'
+        email = 'bysiyavush@gmail.com'
         try:
             subject = f'Новая заявка на экскурсию'
             message = f'Здравствуйте меня зовут {name} \n\n'

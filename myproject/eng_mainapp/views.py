@@ -19,7 +19,7 @@ def index(request):
         phone = request.POST['phone']
         city = request.POST['city']
         ekskurs = request.POST['ekskurs']
-        email = 'nikitospogorelyn@gmail.com'
+        email = 'bysiyavush@gmail.com'
         try:
             subject = f'New application for excursion'
             message = f'Hello, my name is {name} \n\n'
@@ -51,7 +51,7 @@ def index_2(request, id):
         phone = request.POST['phone']
         city = request.POST['city']
         ekskurs = request.POST['ekskurs']
-        email = 'nikitospogorelyn@gmail.com'
+        email = 'bysiyavush@gmail.com'
         try:
             subject = f'New application for excursion'
             message = f'Hello, my name is {name} \n\n'
@@ -60,7 +60,7 @@ def index_2(request, id):
             message += f'I choose an excursion {ekskurs} \n\n'
             mail = EmailMessage(subject=subject, body=message, to=[email])
             mail.send()
-            return redirect('catalog', id=id)
+            return redirect('catalog_en', id=id)
         except ValueError:
             return redirect('error_form_requests')
 
