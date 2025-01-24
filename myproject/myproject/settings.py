@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'mainapp.apps.MainappConfig',
     'eng_mainapp.apps.EngMainappConfig',
     'django_summernote',
-    'modeltranslation',
 ]
 
 
@@ -86,12 +85,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-LANGUAGES = [
-    ('ru', 'Russian'),
-    ('en', 'English'),
-]
 
 SUMMERNOTE_CONFIG = {
     'summernote': {

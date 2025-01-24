@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import MainDeskription, CatalogEkskursii, ModalText
+from django.shortcuts import render, redirect
+from .models import MainDeskription, CatalogEkskursii
 from django.core.mail import EmailMessage
 from django.http import Http404
 

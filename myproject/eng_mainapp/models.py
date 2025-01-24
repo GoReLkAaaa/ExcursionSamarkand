@@ -8,7 +8,7 @@ class MainDeskriptionEn(models.Model):
                 verbose_name='Название города на английском')
     description_en = models.TextField(max_length=1000, blank=True, null=True,
                 verbose_name='Описание города на английском')
-    image_city_en = models.ImageField(upload_to='images/', blank=True, null=True,
+    image_city_en = models.ImageField(upload_to='images_en/', blank=True, null=True,
                 verbose_name='Картинка города анлийской')
 
 
@@ -25,7 +25,7 @@ class CatalogEkskursiiEn(models.Model):
                 verbose_name='Название экскурсии на английском')
     price_excursion_en = models.IntegerField(
                 verbose_name='Цена экскурсии английской')
-    image_excursion_en = models.ImageField(upload_to='image_excursion/',
+    image_excursion_en = models.ImageField(upload_to='image_excursion_en/',
                 verbose_name='Картинка экскурсии английской')
     main_en = models.ForeignKey(MainDeskriptionEn, on_delete=models.CASCADE, related_name='main_en',
                 verbose_name='К какому городу относится англ')
